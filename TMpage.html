@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Professional Team | Task 3</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #4f46e5;
+    --text-dark: #1f2937;
+    --text-light: #6b7280;
+    --bg-light: #f9fafb;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Hero Section */
+.hero {
+    background-color: var(--white);
+    padding: 80px 0 40px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: var(--primary-color);
+}
+
+.hero p {
+    color: var(--text-light);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Filter Section */
+.filter-section {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 40px 0;
+}
+
+.btn {
+    padding: 10px 25px;
+    border: 2px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn.active, .btn:hover {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+/* Team Grid */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+.team-card {
+    background: var(--white);
+    border-radius: 20px;
+    overflow: hidden;
+    shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
+    position: relative;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.team-card.hide {
+    display: none;
+}
+
+/* Image & Social Overlay */
+.card-img {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: var(--transition);
+}
+
+.team-card:hover .card-img img {
+    filter: grayscale(0%);
+    transform: scale(1.1);
+}
+
+.social-links {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    background: rgba(79, 70, 229, 0.8);
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+    transition: var(--transition);
+}
+
+.team-card:hover .social-links {
+    bottom: 0;
+}
+
+.social-links a {
+    color: var(--white);
+    margin: 0 15px;
+    font-size: 1.2rem;
+}
+
+/* Info Section */
+.card-info {
+    padding: 25px;
+    text-align: center;
+}
+
+.card-info h3 {
+    margin-bottom: 5px;
+    font-size: 1.25rem;
+}
+
+.card-info .role {
+    color: var(--primary-color);
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.card-info .bio {
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2rem; }
+    .filter-section { flex-wrap: wrap; }
+}    
+</style>
+<body>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Meet Our <span>Creative Team</span></h1>
+            <p>We are a group of passionate individuals working together to create amazing digital experiences.</p>
+        </div>
+    </header>
+
+    <section class="filter-section">
+        <button class="btn active" onclick="filterSelection('all')">All</button>
+        <button class="btn" onclick="filterSelection('Developer')">Developers</button>
+        <button class="btn" onclick="filterSelection('Designer')">Designers</button>
+        <button class="btn" onclick="filterSelection('Manager')">Managers</button>
+    </section>
+
+    <main class="container">
+        <div class="team-grid" id="teamGrid">
+            
+            <div class="team-card" data-role="Developer">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400" alt="Team Member">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Alex Rivers</h3>
+                    <p class="role">Lead Developer</p>
+                    <p class="bio">Expert in building scalable web applications and cloud architecture.</p>
+                </div>
+            </div>
+
+            <div class="team-card" data-role="Designer">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400" alt="Team Member">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Sarah Chen</h3>
+                    <p class="role">UI/UX Designer</p>
+                    <p class="bio">Focused on creating user-centric designs that solve real problems.</p>
+                </div>
+            </div>
+
+            <div class="team-card" data-role="Manager">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400" alt="Team Member">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>James Wilson</h3>
+                    <p class="role">Project Manager</p>
+                    <p class="bio">Managing timelines and ensuring the highest quality of delivery.</p>
+                </div>
+            </div>
+
+            <div class="team-card" data-role="Developer">
+                <div class="card-img">
+                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" alt="Team Member">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                <div class="card-info">
+                    <h3>Maria Garcia</h3>
+                    <p class="role">Backend Developer</p>
+                    <p class="bio">Optimizing performance and building robust API infrastructures.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function filterSelection(role) {
+            const cards = document.querySelectorAll('.team-card');
+            const buttons = document.querySelectorAll('.btn');
+
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.innerText.toLowerCase().includes(role.toLowerCase()) || (role === 'all' && btn.innerText === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+
+            cards.forEach(card => {
+                if (role === 'all' || card.getAttribute('data-role') === role) {
+                    card.classList.remove('hide');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
